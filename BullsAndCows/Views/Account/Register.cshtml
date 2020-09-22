@@ -1,0 +1,42 @@
+﻿@model BullsAndCows.Models.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<header>
+    <link rel="stylesheet" href="~/css/style.css">
+</header>
+
+<body>
+    <form asp-action="Register" asp-controller="Account" method="post">
+        <div class="form-group  col-md-10">
+            <label class="col-form-label">Username: </label>
+            <input asp-for="UserName" type="text" class="form-control" />
+            <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group  col-md-10">
+            <label class="col-form-label">Email: </label>
+            <input asp-for="Email" type="email" class="form-control" />
+        </div>
+        <div class="form-group col-md-10">
+            <label class="col-form-label">Password: </label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+        <div class="form-group col-md-10">
+            <label class="col-form-label">Confirm new password: </label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control " />
+            <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+    
+</body>
+
+
+<footer>
+
+</footer>
+<style>
+
+</style>

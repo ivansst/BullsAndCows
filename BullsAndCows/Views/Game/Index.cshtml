@@ -1,0 +1,39 @@
+﻿@model BullsAndCows.Models.GameModel
+@{
+    ViewData["Title"] = "Game";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<body>
+    <form asp-action="Index" asp-controller="Game" method="post">
+        @if (Model.Attempts != default(int))
+        {
+            <div class="form-group">
+                <label class="col-form-label">You've tried @Model.Attempts times!</label>
+            </div>
+        }
+        <div class="form-group col-md-12">
+            <label class="col-form-label">Your guess: </label>
+            <input asp-for="PlayerGuess" type="number" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="col-form-label">@Model.CorrectGuesses</label>
+        </div>
+        <input value="@Model.ComputerSecret" asp-for="@Model.ComputerSecret" type="hidden" />
+        <input value="@Model.Attempts" asp-for="@Model.Attempts" type="hidden" />
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Attempt</button>
+        <a class="btn btn-dark float-right" style="top: 0" asp-action="Logout" asp-controller="Account">Logout</a>
+    </form>
+
+    <div class="custom mt-3">
+        <p>Enter a number to see how many bulls and cows you can guess!</p>
+        <p>1 bull is when you have guessed a number at the right position</p>
+        <p>1 cow is if one of the numbers exists in the Computer Secret</p>
+        <p class="text-danger">The Number must be between 1000 and 9999!</p>
+    </div>
+</body>
+
