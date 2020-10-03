@@ -74,7 +74,7 @@ namespace BullsAndCows.Controllers
 
             if (!result.Succeeded)
             {
-                
+                return View(nameof(Register), model);
             }
 
             return RedirectToAction("Index", "Game");
